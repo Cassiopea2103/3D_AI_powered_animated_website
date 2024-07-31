@@ -10,7 +10,6 @@ const CameraRig = ({ children }) => {
     const group= useRef () ; 
     const snap = useSnapshot ( state ) ; 
 
-    // set the model rotation smoothly : 
     useFrame (
         ( state , delta ) => {
 
@@ -38,10 +37,9 @@ const CameraRig = ({ children }) => {
                 targetPosition , 
                 0.25 , 
                 delta 
-                
             )
 
-            // ensure group.current is defined in the DOM : 
+            // set a smooth rotation for the model :  
             if ( group.current ) {
                 easing.dampE(
                     group.current.rotation , 

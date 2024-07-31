@@ -16,8 +16,19 @@ const Shirt = () => {
 	const logoTexture = useTexture (state.logoDecal ) ; 
 	const fullTexture = useTexture (state.fullDecal ) ; 
 
+	useFrame ( ( state , delta ) => {
+		easing.dampC ( 
+			materials.lambert1.color , 
+			snap.color , 
+			0.25 , 
+			delta 
+		)
+	})
+
+	const stateString = JSON.stringify ( state ) ; 
+
 	return (
-		<group>
+		<group key = { stateString } >
 			<mesh
 				castShadow
 				geometry={ nodes.T_Shirt_male.geometry}
