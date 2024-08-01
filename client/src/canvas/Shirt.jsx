@@ -17,15 +17,18 @@ const Shirt = () => {
 	const fullTexture = useTexture (state.fullDecal ) ; 
 
 	useFrame ( ( state , delta ) => {
+
+		console.log ( snap.isLogoTexture )
+		
 		easing.dampC ( 
 			materials.lambert1.color , 
 			snap.color , 
-			0.25 , 
+			0.2 , 
 			delta 
 		)
 	})
 
-	const stateString = JSON.stringify ( state ) ; 
+	const stateString = JSON.stringify ( snap ) ; 
 
 	return (
 		<group key = { stateString } >
@@ -56,6 +59,9 @@ const Shirt = () => {
 						rotation= { [ 0 , 0 , 0 ] } 
 						scale= { 1 }
 						map = { logoTexture }
+						anisotropy = {16}
+						depthTest={ false }
+						depthWrite = { true }
 					/>
 				}
 				
