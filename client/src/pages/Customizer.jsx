@@ -53,6 +53,16 @@ const Customizer = () => {
 				state.isFullTexture = false ;
 				state.isLogoTexture = true ; 
 		}
+
+		// update active filter tab after setting the state :
+		setActiveFilterTab (
+			( prevState ) => {
+				return {
+					...prevState ,
+					[ tabName ] : !prevState [ tabName ]
+				}
+			}
+		)
 	}
 
 	const handleDecals = ( type , result ) => {
